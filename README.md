@@ -11,7 +11,7 @@ Because one of the easiest ways to break a bad habit is to remove its triggers -
 
 ### Install
 
-- Clone this repo.  
+- Clone this repo or download zip
 - Open chrome://extensions as a tab  
 - Activate Developer mode // Entwicklermodus  
 - Click on "load unpackaged extension"  
