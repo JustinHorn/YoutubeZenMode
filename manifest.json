@@ -2,6 +2,7 @@
   "name": "Youtube Zen Mode",
   "version": "1.0",
   "manifest_version": 2,
+  "matches": ["https://www.youtube.com/*"],
 
   "content_scripts": [
     {
