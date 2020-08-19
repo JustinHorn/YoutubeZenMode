@@ -1,4 +1,4 @@
-# YoutubeZenMode chrome extension
+# Youtube Zen Mode chrome extension
 Chrome Extension for youtube that keeps you out of the time wasting video loop by blocking suggestings and comments.
 Because one of the best easiest ways to break a bad habit is by removing its triggers - out of sight out of mind.  
 
