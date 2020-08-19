@@ -1,25 +1,43 @@
-const name = "Youtube Zen Mode";
+console.log(window.location);
+
+let loc = window.location;
 
 const frontPageUrl = new RegExp("youtube.com/?$", "g");
 
-const isFrontPage = () => frontPageUrl.test(window.location);
-
 const watchPageURrl = new RegExp(".*youtube.com/watch.*", "g");
 
-const isWatchPage = () => watchPageURrl.test(window.location);
+console.log("location: " + loc);
+cancel(loc);
 
-if (isFrontPage()) {
-  const primary = document.querySelector("#primary");
-  primary.style.display = "none";
-} else if (isWatchPage()) {
-  const sidebar = document.querySelector("#secondary");
+setInterval(() => {
+  if (window.location !== loc) {
+    loc = window.location;
+    cancel(loc);
+  }
+}, 1000);
 
-  sidebar.style.display = "none";
+function cancel(location) {
+  if (isFrontPage(location)) {
+    const primary = document.querySelector("#primary");
+    primary.style.display = "none";
+  } else if (isWatchPage(location)) {
+    const sidebar = document.querySelector("#secondary");
 
-  const pI = document.querySelector("#primary-inner");
-  const comments = document.querySelector("#comments");
-  comments.style.display = "none";
-  removeEndScreen();
+    sidebar.style.display = "none";
+
+    const pI = document.querySelector("#primary-inner");
+    const comments = document.querySelector("#comments");
+    comments.style.display = "none";
+    removeEndScreen();
+  }
+}
+
+function isFrontPage(location) {
+  return frontPageUrl.test(location);
+}
+
+function isWatchPage(location) {
+  return watchPageURrl.test(location);
 }
 
 function removeEndScreen() {
