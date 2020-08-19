@@ -1,34 +1,41 @@
-console.log(window.location);
-
-let loc = window.location;
+let loc = window.location.href;
 
 const frontPageUrl = new RegExp("youtube.com/?$", "g");
 
-const watchPageURrl = new RegExp(".*youtube.com/watch.*", "g");
+const watchPageURrl = new RegExp("youtube.com/watch", "g");
 
-console.log("location: " + loc);
 cancel(loc);
 
 setInterval(() => {
-  if (window.location !== loc) {
-    loc = window.location;
-    cancel(loc);
+  if (window.location.href !== loc) {
+    loc = window.location.href;
+    setTimeout(() => {
+      cancel(loc);
+    }, 1000);
   }
 }, 1000);
 
 function cancel(location) {
+  //chrome.runtime.sendMessage("showPageAction");
   if (isFrontPage(location)) {
-    const primary = document.querySelector("#primary");
-    primary.style.display = "none";
+    console.log("p will be gone");
+    displayNone("#primary");
+    displayNone(".style-scope .ytd-page-manager");
   } else if (isWatchPage(location)) {
-    const sidebar = document.querySelector("#secondary");
+    displayNone("#secondary");
+    displayNone("#related");
+    displayNone("#chat");
 
-    sidebar.style.display = "none";
+    displayNone("#comments");
 
-    const pI = document.querySelector("#primary-inner");
-    const comments = document.querySelector("#comments");
-    comments.style.display = "none";
     removeEndScreen();
+  }
+}
+
+function displayNone(query) {
+  const node = document.querySelector(query);
+  if (node) {
+    node.style.display = "none";
   }
 }
 
